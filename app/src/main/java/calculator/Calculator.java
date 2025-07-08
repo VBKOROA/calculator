@@ -22,28 +22,11 @@ public class Calculator {
         results.remove(0);
     }
 
-    public <T extends Number> double calculate(T first, T second, Operator operator) {
+    public <T extends Number> double calculate(T first, T second, Operator operator) throws DivideByZeroException {
         double result = 0;
         double firstValue = first.doubleValue();
         double secondValue = second.doubleValue();
-        switch (operator) {
-            case ADD:
-                result = firstValue + secondValue;
-                break;
-            case SUBTRACT:
-                result = firstValue - secondValue;
-                break;
-            case MULTIPLY:
-                result = firstValue * secondValue;
-                break;
-            case DIVIDE:
-                if (secondValue == 0) {
-                    // 0으로 나누는 경우 예외 처리
-                    throw new DivideByZeroException();   
-                }
-                result = firstValue / secondValue;
-                break;
-        }
+        result = operator.apply(firstValue, secondValue);
         results.add(result);
 
         // removeFirst 사용 예시
