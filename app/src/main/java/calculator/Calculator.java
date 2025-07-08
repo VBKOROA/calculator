@@ -9,6 +9,10 @@ import calculator.exception.UnknownOperatorException;
 public class Calculator {
     private List<Integer> results = new ArrayList<>();
 
+    private void removeFirst() {
+        results.remove(0);
+    }
+
     public int calculate(int first, int second, String operator) {
         int result = 0;
         switch (operator) {
