@@ -3,6 +3,7 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
+import calculator.enums.Operator;
 import calculator.exception.DivideByZeroException;
 import calculator.exception.UnknownOperatorException;
 
@@ -21,28 +22,25 @@ public class Calculator {
         results.remove(0);
     }
 
-    public int calculate(int first, int second, String operator) {
+    public int calculate(int first, int second, Operator operator) {
         int result = 0;
         switch (operator) {
-            case "+":
+            case ADD:
                 result = first + second;
                 break;
-            case "-":
+            case SUBTRACT:
                 result = first - second;
                 break;
-            case "*":
+            case MULTIPLY:
                 result = first * second;
                 break;
-            case "/":
+            case DIVIDE:
                 if (second == 0) {
                     // 0으로 나누는 경우 예외 처리
                     throw new DivideByZeroException();   
                 }
                 result = first / second;
                 break;
-            default:
-                // 잘못된 연산자 입력 처리
-                throw new UnknownOperatorException(operator);
         }
         results.add(result);
 

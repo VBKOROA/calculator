@@ -5,6 +5,7 @@ package calculator;
 
 import java.util.Scanner;
 
+import calculator.enums.Operator;
 import calculator.exception.DivideByZeroException;
 import calculator.exception.UnknownOperatorException;
 
@@ -19,10 +20,11 @@ public class App {
             System.out.print("두 번째 정수: ");
             int second = sc.nextInt();
             System.out.print("연산자 (+, -, *, /): ");
-            String operator = sc.next();
-            int result;
+            String operatorString = sc.next();
             try {
-                result = calculator.calculate(first, second, operator);
+                Operator operator = Operator.fromSymbol(operatorString);
+                int result = calculator.calculate(first, second, operator);
+                System.out.println("결과: " + result);
             } catch (DivideByZeroException e) {
                 System.out.println("오류: " + e.getMessage());
                 continue;
@@ -30,7 +32,6 @@ public class App {
                 System.out.println("오류: " + e.getMessage());
                 continue;
             }
-            System.out.println("결과: " + result);
             System.out.println("종료하시겠습니까?(exit): ");
             String exit = sc.next();
             if (exit.equals("exit")) {
