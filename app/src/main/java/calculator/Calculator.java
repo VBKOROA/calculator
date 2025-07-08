@@ -45,6 +45,12 @@ public class Calculator {
                 throw new UnknownOperatorException(operator);
         }
         results.add(result);
+
+        // removeFirst 사용 예시
+        if(results.size() > 5) {
+            removeFirst(); // 결과가 5개를 초과하면 가장 오래된 결과를 삭제
+        }
+
         return result;
     }
 }
