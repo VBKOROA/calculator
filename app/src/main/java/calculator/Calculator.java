@@ -8,6 +8,7 @@ import calculator.exception.DivideByZeroException;
 
 public class Calculator {
     private List<Double> results = new ArrayList<>();
+    private static final int MAX_RESULTS_SIZE = 5;
 
     public List<Double> getResults() {
         return results;
@@ -46,8 +47,8 @@ public class Calculator {
         results.add(result);
 
         // removeFirst 사용 예시
-        if(results.size() > 5) {
-            // 결과가 5개를 초과하면 가장 오래된 결과를 삭제
+        if(results.size() > MAX_RESULTS_SIZE) {
+            // 결과가 MAX_RESULTS_SIZE를 초과하면 가장 오래된 결과를 삭제
             removeFirst(); 
         }
 
