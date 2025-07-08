@@ -25,10 +25,7 @@ public class App {
                 Operator operator = Operator.fromSymbol(operatorString);
                 double result = calculator.calculate(first, second, operator);
                 System.out.println("결과: " + String.format("%.2f", result));
-            } catch (DivideByZeroException e) {
-                System.out.println("오류: " + e.getMessage());
-                continue;
-            } catch (UnknownOperatorException e) {
+            } catch (DivideByZeroException | UnknownOperatorException e) {
                 System.out.println("오류: " + e.getMessage());
                 continue;
             }
