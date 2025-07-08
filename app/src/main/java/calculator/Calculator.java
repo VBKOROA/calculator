@@ -5,16 +5,15 @@ import java.util.List;
 
 import calculator.enums.Operator;
 import calculator.exception.DivideByZeroException;
-import calculator.exception.UnknownOperatorException;
 
 public class Calculator {
-    private List<Integer> results = new ArrayList<>();
+    private List<Double> results = new ArrayList<>();
 
-    public List<Integer> getResults() {
+    public List<Double> getResults() {
         return results;
     }
 
-    public void setResults(List<Integer> results) {
+    public void setResults(List<Double> results) {
         this.results = results;
     }
 
@@ -22,24 +21,26 @@ public class Calculator {
         results.remove(0);
     }
 
-    public int calculate(int first, int second, Operator operator) {
-        int result = 0;
+    public <T extends Number> double calculate(T first, T second, Operator operator) {
+        double result = 0;
+        double firstValue = first.doubleValue();
+        double secondValue = second.doubleValue();
         switch (operator) {
             case ADD:
-                result = first + second;
+                result = firstValue + secondValue;
                 break;
             case SUBTRACT:
-                result = first - second;
+                result = firstValue - secondValue;
                 break;
             case MULTIPLY:
-                result = first * second;
+                result = firstValue * secondValue;
                 break;
             case DIVIDE:
-                if (second == 0) {
+                if (secondValue == 0) {
                     // 0으로 나누는 경우 예외 처리
                     throw new DivideByZeroException();   
                 }
-                result = first / second;
+                result = firstValue / secondValue;
                 break;
         }
         results.add(result);
