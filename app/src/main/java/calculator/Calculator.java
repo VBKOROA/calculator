@@ -53,4 +53,11 @@ public class Calculator {
 
         return result;
     }
+
+    public List<Double> searchBiggerThan(double value) {
+        // value 보다 큰 값들 반환
+        return results.stream()
+                .filter(result -> result > value)
+                .toList();
+    }
 }
