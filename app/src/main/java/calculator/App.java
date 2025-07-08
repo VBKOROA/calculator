@@ -31,6 +31,12 @@ public class App {
                 continue;
             }
             System.out.println("결과: " + result);
+            System.out.println("종료하시겠습니까?(exit): ");
+            String exit = sc.next();
+            if (exit.equals("exit")) {
+                isLoop = false;
+            }
         }
+        sc.close();
     }
 }
