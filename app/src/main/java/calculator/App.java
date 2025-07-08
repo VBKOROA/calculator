@@ -62,5 +62,6 @@ public class App {
                 isLoop = false;
             }
         }
+        sc.close();
     }
 }
