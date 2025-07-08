@@ -23,7 +23,7 @@ public class App {
             String operatorString = sc.next();
             try {
                 Operator operator = Operator.fromSymbol(operatorString);
-                int result = calculator.calculate(first, second, operator);
+                double result = calculator.calculate(first, second, operator);
                 System.out.println("결과: " + result);
             } catch (DivideByZeroException e) {
                 System.out.println("오류: " + e.getMessage());
