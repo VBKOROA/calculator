@@ -9,6 +9,14 @@ import calculator.exception.UnknownOperatorException;
 public class Calculator {
     private List<Integer> results = new ArrayList<>();
 
+    public List<Integer> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Integer> results) {
+        this.results = results;
+    }
+
     private void removeFirst() {
         results.remove(0);
     }
