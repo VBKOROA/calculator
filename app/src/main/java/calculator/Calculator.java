@@ -23,10 +23,9 @@ public class Calculator {
     }
 
     public <T extends Number> double calculate(T first, T second, Operator operator) throws DivideByZeroException {
-        double result = 0;
         double firstValue = first.doubleValue();
         double secondValue = second.doubleValue();
-        result = operator.apply(firstValue, secondValue);
+        double result = operator.apply(firstValue, secondValue);
         results.add(result);
 
         // removeFirst 사용 예시
