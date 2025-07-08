@@ -32,7 +32,7 @@ public class App {
                 System.out.println("오류: " + e.getMessage());
                 continue;
             }
-            System.out.println("종료하시겠습니까?(exit): ");
+            System.out.print("종료하시겠습니까?(exit): ");
             String exit = sc.next();
             if (exit.equals("exit")) {
                 isLoop = false;
