@@ -39,5 +39,23 @@ public class App {
             }
         }
         sc.close();
+
+        // searchBiggerThan 예시
+        searchBiggerThanExample();
+    }
+
+    public static void searchBiggerThanExample() {
+        Calculator calculator = new Calculator();
+
+        // 참조형이므로 getResults()를 통해 접근
+        calculator.getResults().add(10.0);
+        calculator.getResults().add(20.0);
+        calculator.getResults().add(30.0);
+        calculator.getResults().add(40.0);
+        calculator.getResults().add(50.0);
+        
+        double value = 25.0;
+        System.out.println("값: " + value);
+        System.out.println("더 큰 값: " + calculator.searchBiggerThan(value));
     }
 }
