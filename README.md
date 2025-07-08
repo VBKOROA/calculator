@@ -2,6 +2,6 @@
 
 자바를 활용한 계산기를 구현하는 프로젝트입니다.
 
-## LEVEL 2
+## LEVEL 3
 
-클래스를 사용한 계산기입니다.
+ENUM, Generic, Lambda and Stream을 활용한 고오급 계산기입니다.
