@@ -3,12 +3,59 @@
  */
 package calculator;
 
+import java.util.Scanner;
+
+import calculator.exception.DivideByZeroException;
+import calculator.exception.UnknownOperatorException;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    public static int calculate(int first, int second, String operator) {
+        int result = 0;
+        switch (operator) {
+            case "+":
+                result = first + second;
+                break;
+            case "-":
+                result = first - second;
+                break;
+            case "*":
+                result = first * second;
+                break;
+            case "/":
+                if (second == 0) {
+                    // 0으로 나누는 경우 예외 처리
+                    throw new DivideByZeroException();   
+                }
+                result = first / second;
+                break;
+            default:
+                // 잘못된 연산자 입력 처리
+                throw new UnknownOperatorException(operator);
+        }
+        return result;
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        boolean isLoop = true;
+        Scanner sc = new Scanner(System.in);
+        while (isLoop) {
+            System.out.print("첫 번째 정수: ");
+            int first = sc.nextInt();
+            System.out.print("두 번째 정수: ");
+            int second = sc.nextInt();
+            System.out.print("연산자 (+, -, *, /): ");
+            String operator = sc.next();
+            int result;
+            try {
+                result = calculate(first, second, operator);
+            } catch (DivideByZeroException e) {
+                System.out.println("오류: " + e.getMessage());
+                continue;
+            } catch (UnknownOperatorException e) {
+                System.out.println("오류: " + e.getMessage());
+                continue;
+            }
+            System.out.println("결과: " + result);
+        }
     }
 }
