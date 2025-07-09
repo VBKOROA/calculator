@@ -64,6 +64,8 @@ public class App {
                 return input;
             } catch (InputMismatchException e) {
                 System.out.println("잘못된 입력입니다. 다시 시도하세요.");
+                // 잘못된 입력 버퍼 초기화.
+                sc.next();
                 continue;
             }
         }
