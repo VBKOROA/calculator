@@ -1,49 +1,61 @@
-# 🚀 스파르타 계산기 프로젝트
+<div align="center">
 
-[![Java](https://img.shields.io/badge/Java-17-blue.svg)](https://www.java.com)
-[![Gradle](https://img.shields.io/badge/Gradle-8.7-green.svg)](https://gradle.org)
+# 🚀 Sparta Calculator 🚀
 
-Java의 모던 기능(ENUM, Generic, Lambda, Stream)을 적극적으로 활용하여 구현한 콘솔 기반의 고성능 계산기 애플리케이션입니다. 단순한 연산을 넘어 객체지향 설계 원칙과 최신 Java 문법을 학습하는 것을 목표로 합니다.
+**Modern Java를 활용한 고성능 콘솔 계산기**
+
+<p>
+  <img src="https://img.shields.io/badge/Java-17-blue.svg?style=for-the-badge&logo=java" alt="Java 17"/>
+  <img src="https://img.shields.io/badge/Gradle-8.7-green.svg?style=for-the-badge&logo=gradle" alt="Gradle 8.7"/>
+</p>
+
+</div>
+
+> 💡 단순한 연산을 넘어, Java의 ENUM, Generic, Lambda, Stream 등 모던 기능을 통해 객체지향 설계 원칙과 클린 코드를 학습하고 적용하는 것을 목표로 합니다.
 
 ---
 
-## 🌟 주요 기능
+## ✨ 주요 기능
 
-### 1. 안전하고 확장 가능한 사칙연산
-- **`Enum` 활용**: 연산자(`+`, `-`, `*`, `/`)를 `Enum`으로 정의하여 타입 안정성을 확보하고, 각 연산자에 맞는 계산 로직을 람다식으로 캡슐화했습니다.
-- **확장성**: 새로운 연산자를 추가할 때 `Enum`과 해당 로직만 추가하면 되어 유지보수가 용이합니다.
-
-### 2. 제네릭을 이용한 유연한 결과 관리
-- 계산된 결과는 제네릭 타입의 리스트에 저장되어, 정수, 실수 등 다양한 숫자 타입의 결과를 유연하게 관리할 수 있습니다.
-
-### 3. Stream API를 활용한 데이터 처리
-- 저장된 결과 리스트에서 특정 조건(예: 특정 값보다 큰 결과 조회)을 만족하는 데이터를 `Stream` API를 사용하여 간결하고 효율적으로 필터링합니다.
-
-### 4. 맞춤형 예외 처리
-- **0으로 나누기**: `DivideByZeroException`을 통해 0으로 나누는 경우를 명시적으로 처리합니다.
-- **잘못된 연산자**: `UnknownOperatorException`을 통해 지원하지 않는 연산자가 입력되었을 때의 예외를 처리합니다.
-- **잘못된 입력**: `InputMismatchException`을 통해 정수가 아닌 값을 입력했을 때의 예외를 처리합니다.
+| - | 기능 | 설명 |
+| :---: | :--- | :--- |
+| 🛡️ | **타입-안전 연산** | `Enum`과 `Lambda`를 결합하여 연산자별 로직을 캡슐화하고, 컴파일 타임에 타입 안정성을 보장합니다. |
+| 💎 | **유연한 결과 관리** | `Generic`을 활용하여 정수, 실수 등 다양한 숫자 타입의 계산 결과를 유연하게 저장하고 관리합니다. |
+| ⚡ | **고성능 데이터 처리** | `Stream API`를 사용하여 저장된 결과 목록을 간결하고 효율적으로 필터링하고 검색합니다. |
+| 🚨 | **맞춤형 예외 처리** | `DivideByZeroException` 등 비즈니스 로직에 특화된 맞춤형 예외를 통해 코드의 안정성을 높입니다. |
 
 ---
 
 ## 🏁 시작하기
 
-### 요구 사항
-- JDK 17 이상
-- Gradle 8.7 이상
+### ✅ 요구 사항
 
-### 실행 방법
-1.  프로젝트를 클론하거나 다운로드합니다.
-2.  터미널에서 프로젝트의 루트 디렉토리로 이동합니다.
-3.  다음 명령어를 실행하여 애플리케이션을 실행합니다.
+*   JDK 17 이상
+*   Gradle 8.7 이상
+
+### 🛠️ 실행 방법
+
+1.  프로젝트를 로컬 환경에 클론합니다.
+    ```bash
+    git clone https://github.com/your-username/sparta-calculator.git
+    ```
+2.  프로젝트 루트 디렉토리로 이동하여 Gradle Wrapper를 실행합니다.
     ```bash
     ./gradlew run
     ```
-4.  콘솔의 안내에 따라 두 개의 숫자와 연산자를 입력하여 결과를 확인합니다.
-    ```
-    첫 번째 정수: 10
-    두 번째 정수: 5
-    연산자 (+, -, *, /): *
-    결과: 50.00
-    ```
-5.  `exit`을 입력하여 프로그램을 종료할 수 있습니다.
+3.  콘솔 안내에 따라 계산을 진행합니다.
+
+<details>
+<summary>🖥️ 실행 예시 보기</summary>
+<br>
+
+```
+첫 번째 정수: 10
+두 번째 정수: 5
+연산자 (+, -, *, /): *
+결과: 50.00
+
+종료하시겠습니까?(exit):
+```
+
+</details>
