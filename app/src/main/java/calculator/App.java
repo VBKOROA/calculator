@@ -3,6 +3,7 @@
  */
 package calculator;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import calculator.enums.Operator;
@@ -15,10 +16,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Calculator calculator = new Calculator();
         while (isLoop) {
-            System.out.print("첫 번째 정수: ");
-            int first = sc.nextInt();
-            System.out.print("두 번째 정수: ");
-            int second = sc.nextInt();
+            int first = inputWithValidation("첫 번째 정수: ", sc);
+            int second = inputWithValidation("두 번째 정수: ", sc);
             System.out.print("연산자 (+, -, *, /): ");
             String operatorString = sc.next();
             try {
@@ -54,5 +53,19 @@ public class App {
         double value = 25.0;
         System.out.println("값: " + value);
         System.out.println("더 큰 값: " + calculator.searchBiggerThan(value));
+    }
+
+    public static int inputWithValidation(String message, Scanner sc) {
+        int input = 0;
+        while(true) {
+            System.out.print(message);
+            try {
+                input = sc.nextInt();
+                return input;
+            } catch (InputMismatchException e) {
+                System.out.println("잘못된 입력입니다. 다시 시도하세요.");
+                continue;
+            }
+        }
     }
 }
