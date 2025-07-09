@@ -22,6 +22,15 @@ public class Calculator {
         results.remove(0);
     }
 
+    /**
+     * 계산 메서드
+     * @param <T> - Number 타입의 제네릭
+     * @param first - 첫 번째 피연산자
+     * @param second - 두 번째 피연산자
+     * @param operator - 연산자
+     * @return - 계산 결과
+     * @throws DivideByZeroException - 0으로 나누기 예외
+     */
     public <T extends Number> double calculate(T first, T second, Operator operator) throws DivideByZeroException {
         double firstValue = first.doubleValue();
         double secondValue = second.doubleValue();
@@ -37,6 +46,11 @@ public class Calculator {
         return result;
     }
 
+    /**
+     * value 보다 큰 값들을 검색하는 메서드
+     * @param value - 기준 값
+     * @return - 검색된 결과 리스트
+     */
     public List<Double> searchBiggerThan(double value) {
         // value 보다 큰 값들 반환
         return results.stream()
