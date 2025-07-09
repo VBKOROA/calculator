@@ -3,12 +3,69 @@
  */
 package calculator;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import calculator.enums.Operator;
+import calculator.exception.DivideByZeroException;
+import calculator.exception.UnknownOperatorException;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    public static void main(String[] args) {
+        boolean isLoop = true;
+        Scanner sc = new Scanner(System.in);
+        Calculator calculator = new Calculator();
+        while (isLoop) {
+            int first = inputWithValidation("첫 번째 정수: ", sc);
+            int second = inputWithValidation("두 번째 정수: ", sc);
+            System.out.print("연산자 (+, -, *, /): ");
+            String operatorString = sc.next();
+            try {
+                Operator operator = Operator.fromSymbol(operatorString);
+                double result = calculator.calculate(first, second, operator);
+                System.out.println("결과: " + String.format("%.2f", result));
+            } catch (DivideByZeroException | UnknownOperatorException e) {
+                System.out.println("오류: " + e.getMessage());
+                continue;
+            }
+            System.out.print("종료하시겠습니까?(exit): ");
+            String exit = sc.next();
+            if (exit.equals("exit")) {
+                isLoop = false;
+            }
+        }
+        sc.close();
+
+        // searchBiggerThan 예시
+        searchBiggerThanExample();
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    public static void searchBiggerThanExample() {
+        Calculator calculator = new Calculator();
+
+        // 참조형이므로 getResults()를 통해 접근
+        calculator.getResults().add(10.0);
+        calculator.getResults().add(20.0);
+        calculator.getResults().add(30.0);
+        calculator.getResults().add(40.0);
+        calculator.getResults().add(50.0);
+        
+        double value = 25.0;
+        System.out.println("값: " + value);
+        System.out.println("더 큰 값: " + calculator.searchBiggerThan(value));
+    }
+
+    public static int inputWithValidation(String message, Scanner sc) {
+        int input = 0;
+        while(true) {
+            System.out.print(message);
+            try {
+                input = sc.nextInt();
+                return input;
+            } catch (InputMismatchException e) {
+                System.out.println("잘못된 입력입니다. 다시 시도하세요.");
+                sc.next(); // 잘못된 입력 버퍼 초기화.
+            }
+        }
     }
 }
