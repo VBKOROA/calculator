@@ -47,5 +47,3 @@ Java의 모던 기능(ENUM, Generic, Lambda, Stream)을 적극적으로 활용�
     결과: 50.00
     ```
 5.  `exit`을 입력하여 프로그램을 종료할 수 있습니다.
-
----
