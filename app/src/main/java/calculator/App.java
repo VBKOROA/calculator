@@ -22,8 +22,8 @@ public class App {
             String operatorString = sc.next();
             try {
                 Operator operator = Operator.fromSymbol(operatorString);
-                double result = calculator.calculate(first, second, operator);
-                System.out.println("결과: " + String.format("%.2f", result));
+                var result = calculator.calculate(first, second, operator);
+                System.out.println("결과: " + result);
             } catch (DivideByZeroException | UnknownOperatorException e) {
                 System.out.println("오류: " + e.getMessage());
                 continue;
@@ -44,11 +44,11 @@ public class App {
         Calculator calculator = new Calculator();
 
         // 참조형이므로 getResults()를 통해 접근
-        calculator.getResults().add(10.0);
+        calculator.getResults().add(10);
         calculator.getResults().add(20.0);
-        calculator.getResults().add(30.0);
+        calculator.getResults().add(30);
         calculator.getResults().add(40.0);
-        calculator.getResults().add(50.0);
+        calculator.getResults().add(50);
         
         double value = 25.0;
         System.out.println("값: " + value);

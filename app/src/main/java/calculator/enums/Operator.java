@@ -9,11 +9,21 @@ public enum Operator {
         public double apply(double first, double second) {
             return first + second;
         }
+
+        @Override
+        public int apply(int first, int second) {
+            return first + second;
+        }
     },
 
     SUBTRACT("-") {
         @Override
         public double apply(double first, double second) {
+            return first - second;
+        }
+
+        @Override
+        public int apply(int first, int second) {
             return first - second;
         }
     },
@@ -23,11 +33,24 @@ public enum Operator {
         public double apply(double first, double second) {
             return first * second;
         }
+
+        @Override
+        public int apply(int first, int second) {
+            return first * second;
+        }
     },
 
     DIVIDE("/") {
         @Override
         public double apply(double first, double second) {
+            if (second == 0) {
+                throw new DivideByZeroException();
+            }
+            return first / second;
+        }
+
+        @Override
+        public int apply(int first, int second) {
             if (second == 0) {
                 throw new DivideByZeroException();
             }
@@ -49,6 +72,14 @@ public enum Operator {
      * @throws DivideByZeroException - 두 번째 피연산자가 0인 경우, 나눗셈 연산에서 발생할 수 있는 예외.
      */
     public abstract double apply(double first, double second) throws DivideByZeroException;
+
+    /**
+     * @param first - 첫 번째 피연산자
+     * @param second - 두 번째 피연산자
+     * @return - 연산 결과
+     * @throws DivideByZeroException - 두 번째 피연산자가 0인 경우, 나눗셈 연산에서 발생할 수 있는 예외.
+     */
+    public abstract int apply(int first, int second) throws DivideByZeroException;
 
     public String getSymbol() {
         return symbol;
