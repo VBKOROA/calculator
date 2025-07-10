@@ -35,8 +35,10 @@ public class Calculator {
     public <T extends Number> T calculate(T first, T second, Operator operator) throws DivideByZeroException {
         Number result;
         if (first instanceof Double || second instanceof Double) {
+            // 만약 첫 번째나 두 번째 피연산자가 Double 타입이면, double 연산을 수행
             result = operator.apply(first.doubleValue(), second.doubleValue());
         } else if (first instanceof Integer || second instanceof Integer) {
+            // 만약 첫 번째나 두 번째 피연산자가 Integer 타입이면, int 연산을 수행
             result = operator.apply(first.intValue(), second.intValue());
         } else {
             // 기본적으로 double로 처리하거나 예외 발생
