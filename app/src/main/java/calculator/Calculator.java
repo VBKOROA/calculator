@@ -31,6 +31,7 @@ public class Calculator {
      * @return - 계산 결과
      * @throws DivideByZeroException - 0으로 나누기 예외
      */
+    @SuppressWarnings("unchecked")
     public <T extends Number> T calculate(T first, T second, Operator operator) throws DivideByZeroException {
         Number result;
         if (first instanceof Double || second instanceof Double) {
