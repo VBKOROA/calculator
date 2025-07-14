@@ -3,7 +3,9 @@
  */
 package calculator;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import calculator.enums.Operator;
@@ -36,12 +38,8 @@ public class App {
     public static void searchBiggerThanExample() {
         Calculator calculator = new Calculator();
 
-        // 참조형이므로 getResults()를 통해 접근
-        calculator.getResults().add(10);
-        calculator.getResults().add(20.0);
-        calculator.getResults().add(30);
-        calculator.getResults().add(40.0);
-        calculator.getResults().add(50);
+        List<Number> testResults = new ArrayList<>(List.of(10, 20.5, 30, 40.0, 50.5));
+        calculator.setResults(testResults);
 
         double value = 25.0;
         System.out.println("값: " + value);
