@@ -23,9 +23,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Calculator calculator = new Calculator();
         while (isLoop) {
-            boolean isError = mainLoop(sc, calculator);
-            if (isError)
-                continue;
+            mainLoop(sc, calculator);
             System.out.print("종료하시겠습니까?(exit): ");
             String exit = sc.next();
             if (exit.equals("exit")) {
@@ -64,7 +62,7 @@ public class App {
         }
     }
 
-    public static boolean mainLoop(Scanner sc, Calculator calculator) {
+    public static void mainLoop(Scanner sc, Calculator calculator) {
         int first = inputWithValidation("첫 번째 정수: ", sc);
         int second = inputWithValidation("두 번째 정수: ", sc);
         System.out.print("연산자 (+, -, *, /): ");
@@ -75,8 +73,6 @@ public class App {
             System.out.println("결과: " + result);
         } catch (DivideByZeroException | UnknownOperatorException e) {
             System.out.println("오류: " + e.getMessage());
-            return false; // 오류 발생시 false
         }
-        return true;
     }
 }
