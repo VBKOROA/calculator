@@ -12,22 +12,18 @@ import calculator.exception.UnknownOperatorException;
 
 public class App {
     public static void main(String[] args) {
+        runCalculatorLoop();
+
+        // searchBiggerThan 예시
+        searchBiggerThanExample();
+    }
+
+    public static void runCalculatorLoop() {
         boolean isLoop = true;
         Scanner sc = new Scanner(System.in);
         Calculator calculator = new Calculator();
         while (isLoop) {
-            int first = inputWithValidation("첫 번째 정수: ", sc);
-            int second = inputWithValidation("두 번째 정수: ", sc);
-            System.out.print("연산자 (+, -, *, /): ");
-            String operatorString = sc.next();
-            try {
-                Operator operator = Operator.fromSymbol(operatorString);
-                var result = calculator.calculate(first, second, operator);
-                System.out.println("결과: " + result);
-            } catch (DivideByZeroException | UnknownOperatorException e) {
-                System.out.println("오류: " + e.getMessage());
-                continue;
-            }
+            mainLoop(sc, calculator);
             System.out.print("종료하시겠습니까?(exit): ");
             String exit = sc.next();
             if (exit.equals("exit")) {
@@ -35,9 +31,6 @@ public class App {
             }
         }
         sc.close();
-
-        // searchBiggerThan 예시
-        searchBiggerThanExample();
     }
 
     public static void searchBiggerThanExample() {
@@ -49,7 +42,7 @@ public class App {
         calculator.getResults().add(30);
         calculator.getResults().add(40.0);
         calculator.getResults().add(50);
-        
+
         double value = 25.0;
         System.out.println("값: " + value);
         System.out.println("더 큰 값: " + calculator.searchBiggerThan(value));
@@ -57,7 +50,7 @@ public class App {
 
     public static int inputWithValidation(String message, Scanner sc) {
         int input = 0;
-        while(true) {
+        while (true) {
             System.out.print(message);
             try {
                 input = sc.nextInt();
@@ -66,6 +59,20 @@ public class App {
                 System.out.println("잘못된 입력입니다. 다시 시도하세요.");
                 sc.next(); // 잘못된 입력 버퍼 초기화.
             }
+        }
+    }
+
+    public static void mainLoop(Scanner sc, Calculator calculator) {
+        int first = inputWithValidation("첫 번째 정수: ", sc);
+        int second = inputWithValidation("두 번째 정수: ", sc);
+        System.out.print("연산자 (+, -, *, /): ");
+        String operatorString = sc.next();
+        try {
+            Operator operator = Operator.fromSymbol(operatorString);
+            var result = calculator.calculate(first, second, operator);
+            System.out.println("결과: " + result);
+        } catch (DivideByZeroException | UnknownOperatorException e) {
+            System.out.println("오류: " + e.getMessage());
         }
     }
 }
