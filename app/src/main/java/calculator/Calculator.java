@@ -31,18 +31,16 @@ public class Calculator {
      * @return - 계산 결과
      * @throws DivideByZeroException - 0으로 나누기 예외
      */
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T calculate(T first, T second, Operator operator) throws DivideByZeroException {
+    public <T extends Number> Number calculate(T first, T second, Operator operator) throws DivideByZeroException {
+        double doubleResult = operator.apply(first.doubleValue(), second.doubleValue());
+
         Number result;
-        if (first instanceof Double || second instanceof Double) {
-            // 만약 첫 번째나 두 번째 피연산자가 Double 타입이면, double 연산을 수행
-            result = operator.apply(first.doubleValue(), second.doubleValue());
-        } else if (first instanceof Integer || second instanceof Integer) {
-            // 만약 첫 번째나 두 번째 피연산자가 Integer 타입이면, int 연산을 수행
-            result = operator.apply(first.intValue(), second.intValue());
+        if (doubleResult % 1 == 0) {
+            // 만약 결과가 정수라면, int로 변환
+            result = (int) doubleResult;
         } else {
-            // 기본적으로 double로 처리하거나 예외 발생
-            result = operator.apply(first.doubleValue(), second.doubleValue());
+            // 결과가 실수라면, double로 유지
+            result = doubleResult;
         }
         
         results.add(result);
@@ -53,7 +51,7 @@ public class Calculator {
             removeFirst(); 
         }
 
-        return (T) result;
+        return result;
     }
 
     /**
