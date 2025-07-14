@@ -11,7 +11,7 @@ public class Calculator {
     private static final int MAX_RESULTS_SIZE = 5;
 
     public List<Number> getResults() {
-        return results;
+        return List.copyOf(results);
     }
 
     public void setResults(List<Number> results) {
