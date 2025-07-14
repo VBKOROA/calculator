@@ -48,24 +48,6 @@ public class App {
         System.out.println("더 큰 값: " + calculator.searchBiggerThan(value));
     }
 
-    public static void calculateExample() {
-        Calculator calculator = new Calculator();
-
-        // 정수 계산 예시
-        int firstInt = 10;
-        int secondInt = 5;
-        Operator operatorInt = Operator.ADD;
-        int resultInt = calculator.calculate(firstInt, secondInt, operatorInt);
-        System.out.println("정수 계산 결과: " + resultInt);
-
-        // 실수 계산 예시
-        double firstDouble = 10.5;
-        double secondDouble = 5.2;
-        Operator operatorDouble = Operator.SUBTRACT;
-        double resultDouble = calculator.calculate(firstDouble, secondDouble, operatorDouble);
-        System.out.println("실수 계산 결과: " + resultDouble);
-    }
-
     public static int inputWithValidation(String message, Scanner sc) {
         int input = 0;
         while (true) {
