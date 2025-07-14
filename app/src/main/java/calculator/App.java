@@ -12,6 +12,13 @@ import calculator.exception.UnknownOperatorException;
 
 public class App {
     public static void main(String[] args) {
+        runCalculatorLoop();
+
+        // searchBiggerThan 예시
+        searchBiggerThanExample();
+    }
+
+    public static void runCalculatorLoop() {
         boolean isLoop = true;
         Scanner sc = new Scanner(System.in);
         Calculator calculator = new Calculator();
@@ -26,9 +33,6 @@ public class App {
             }
         }
         sc.close();
-
-        // searchBiggerThan 예시
-        searchBiggerThanExample();
     }
 
     public static void searchBiggerThanExample() {
