@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import calculator.enums.Operator;
 import calculator.exception.DivideByZeroException;
@@ -15,7 +16,9 @@ public class Calculator {
     }
 
     public void setResults(List<Number> results) {
-        this.results = results;
+        this.results = new ArrayList<>(
+                Objects.requireNonNullElseGet(results, ArrayList::new)); // 메서드(생성자) 참조
+                // () -> new ArrayList<>() // 이거랑 같은 의미
     }
 
     private void removeFirst() {
@@ -24,9 +27,10 @@ public class Calculator {
 
     /**
      * 계산 메서드
-     * @param <T> - Number 타입의 제네릭
-     * @param first - 첫 번째 피연산자
-     * @param second - 두 번째 피연산자
+     * 
+     * @param <T>      - Number 타입의 제네릭
+     * @param first    - 첫 번째 피연산자
+     * @param second   - 두 번째 피연산자
      * @param operator - 연산자
      * @return - 계산 결과
      * @throws DivideByZeroException - 0으로 나누기 예외
@@ -42,13 +46,13 @@ public class Calculator {
             // 결과가 실수라면, double로 유지
             result = doubleResult;
         }
-        
+
         results.add(result);
 
         // removeFirst 사용 예시
-        if(results.size() > MAX_RESULTS_SIZE) {
+        if (results.size() > MAX_RESULTS_SIZE) {
             // 결과가 MAX_RESULTS_SIZE를 초과하면 가장 오래된 결과를 삭제
-            removeFirst(); 
+            removeFirst();
         }
 
         return result;
@@ -56,6 +60,7 @@ public class Calculator {
 
     /**
      * value 보다 큰 값들을 검색하는 메서드
+     * 
      * @param value - 기준 값
      * @return - 검색된 결과 리스트
      */
